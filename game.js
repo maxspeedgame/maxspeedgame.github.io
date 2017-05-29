@@ -213,7 +213,7 @@ function share(){
 	FB.ui({
     method: 'share',
     display: 'popup',
-    href: '', 
+    href: 'https://maxspeedgame.github.io/', 
 	quote: "I went " + kmh + " Km/h, how fast are you?",
   }, function(response){});
 }
