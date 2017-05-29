@@ -77,7 +77,7 @@ function mainLoop() {
 function preloadImages(){
 					for (i = 0; i < 13; i++) {
 					roadFrames[i] = new Image()
-					images[i].src = "assets/roadFrames/"+i+".png";
+					roadFrames[i].src = "assets/roadFrames/"+i+".png";
 				}
 }
 
