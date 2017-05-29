@@ -33,7 +33,7 @@ var hp = 3;
 var mainInterval;
 var achievements = new Array();
 var playing = false;
-
+var roadFrames = new Array();
 
 function start() {
 	document.getElementById("instrDiv").style.display = "none";
@@ -73,6 +73,13 @@ function mainLoop() {
 	checkAchievements();
 }
 
+function preloadImages(){
+					for (i = 0; i < 13; i++) {
+					roadFrames[i] = new Image()
+					images[i].src = "assets/roadFrames/"+i+".png";
+				}
+}
+
 function increaseSpeed() {
 	if (speed < maxSpeed) {
 		speed += speedIncrPerSecond / FPS;
@@ -85,7 +92,7 @@ function increaseKMH() {
 }
 
 function setRoadFrame(pos) {
-	document.getElementById("road").src = "assets/roadFrames/" + (pos % 13) + ".png";
+	document.getElementById("road").src = roadFrames[pos%13];
 }
 
 function setBlockPos() {
