@@ -36,6 +36,7 @@ var playing = false;
 var roadFrames = new Array();
 
 function start() {
+	preloadImages();
 	document.getElementById("instrDiv").style.display = "none";
 	playing = true;
 	carPos = ECarPosition.MID;
