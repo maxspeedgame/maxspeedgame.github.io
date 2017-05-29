@@ -93,7 +93,7 @@ function increaseKMH() {
 }
 
 function setRoadFrame(pos) {
-	document.getElementById("road") = roadFrames[pos%13];
+	document.getElementById("road").src = roadFrames[pos%13].src;
 }
 
 function setBlockPos() {
