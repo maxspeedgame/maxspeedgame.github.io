@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MAXSPEED</title>
+  <style type="text/css">
+
+	@font-face {
+    font-family: digitalNumbers;
+    src: url(assets/TRANA___.TTF);
+	}
+	
+	@font-face {
+    font-family: bombardier;
+    src: url(assets/bombard_.otf);
+	}
+	
+    body {
+      background-color: rgb(0, 0, 0);
+    }
+	
+	.road {
+	top: 0;
+	left: 0;
+    display: block;
+    margin: auto;
+    width: 12%;	
+	image-rendering: optimizeSpeed;             
+	image-rendering: -moz-crisp-edges;          
+	image-rendering: -o-crisp-edges;            
+	image-rendering: -webkit-optimize-contrast; 
+	image-rendering: pixelated;
+	image-rendering: optimize-contrast;         
+	-ms-interpolation-mode: nearest-neighbor;
+	}
+	
+	.car{
+	position: absolute;
+	top: 80%;
+	left: 46%;
+	transform: rotate(-90deg);
+	display: block;
+    height: auto;
+    width: 8%;
+    z-index: 2;
+	}
+	
+	.block{
+	position: absolute;
+	top: -5%;
+	left: 50%;
+	display: none;
+    height: auto;
+    width: 6%;
+    z-index: 1;
+	}
+	
+	.speed{
+	font-family: digitalNumbers;
+	position:absolute;
+	font-size: 3.2em;
+	text-align: right;
+	width: 50%;
+	top: 80%;
+	left: -10%;
+	color: white;
+	}
+	
+	.health{
+	font-family: digitalNumbers;
+	position:absolute;
+	font-size: 3.2em;
+	text-align: left;
+	width: 30%;
+	top: 80%;
+	left: 60%;
+	color: white;
+	}
+	
+	.container {
+    position: relative;
+	left: 0;
+	top: 0;
+	}
+		
+	.containerTL {
+    position: absolute;
+	left: 0;
+	top: 0;
+	}	
+	
+	.containerTR {
+    position: absolute;
+	right: 0;
+	top: 0;
+	}
+	
+	.logo {
+    position: relative;
+	left: 0;
+	top: 0;
+	}
+	
+	.gameoverContainer {
+	position: absolute;
+	display: none;
+	background-color: black;
+    width: 40%;
+	z-index: 5;
+	top: 20%;
+	left: 30%;
+	text-align: justify;
+	}
+	
+	.gameoverText {
+	font-family: bombardier;
+	position: relative;
+	text-align: center;
+	left: 0;
+	top: 0;
+	color: white;
+	}
+
+	.medals {
+	position: relative;
+    margin: auto;
+	display:inline-block;
+	white-space: nowrap;
+	}
+	
+
+	
+	</style>
+<body>
+	<script>
+	  window.fbAsyncInit = function() {
+		FB.init({
+		  appId      : '842123882606185',
+		  xfbml      : true,
+		  version    : 'v2.9'
+		});
+		FB.AppEvents.logPageView();
+	  };
+
+	  (function(d, s, id){
+		 var js, fjs = d.getElementsByTagName(s)[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement(s); js.id = id;
+		 js.src = "https://connect.facebook.net/en_US/all.js";
+		 fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+	
+	<div class="container">
+		<img id="road" src="assets/roadFrames/0.png" class="road">
+		<img id="car" src="assets/car.png" class="car">
+		<img id="block" src="assets/block.png" class="block">
+		<p id="speedometer" class="speed"></p>
+		<p id="hp" class="health"></p>
+		<audio loop id="music" src="assets/music.mp3" autoplay></audio>
+		<audio id="crack" src="assets/impact.mp3"  ></audio>
+		<audio id="crash" src="assets/impact.mp3"  ></audio>
+	</div>
+	
+	<div class="containerTL">
+		<img src="assets/maxspeed.gif" class="logo">
+	</div>
+	
+	<div class="containerTR">
+		<img src="assets/maxspeed.gif" class="logo">
+	</div>
+	
+	<div id="instrDiv" class="gameoverContainer" style="display: block;">
+		<p class="gameoverText">
+			<img src="assets/maxspeed.gif" class="medals" style="width: 75%;height: auto;">
+		</p>
+		<p class="gameoverText" style="font-size: 2em;">Use the left and right arrow key to evade barriers</p>
+		<p class="gameoverText" style="font-size: 2em;">Press Space to start</p>
+
+	</div>	
+	
+	<div id="goDiv" class="gameoverContainer">
+		<p class="gameoverText" style="font-size: 5em;	line-height: 50%;">GAME OVER</p>
+		<p id="finalText" class="gameoverText" style="font-size: 2em;">Final speed:</p>
+		<p class="gameoverText" style="font-size: 1.2em;"><a onclick="share()" href="javascript:void(0);">Share on facebook!</a></p>
+		<p class="gameoverText" style="font-size: 1em;">Achievements:</p>
+		<p class="gameoverText">
+			<img id="medal0" src="assets/medal_base_locked.png" class="medals" title="Supersonic: Reach Mach 1.0">
+			<img id="medal1" src="assets/medal_base_locked.png" class="medals" title="Blackbird: Reach Mach 3.3">
+			<img id="medal2" src="assets/medal_base_locked.png" class="medals" title="Hypersonic: Reach Mach 5.0">
+			<img id="medal3" src="assets/medal_base_locked.png" class="medals" title="Good bye: Reach 11,2 Km/s">
+			<img id="medal4" src="assets/medal_base_locked.png" class="medals" title="Sublight: Reach 0.01c">
+			<img id="medal5" src="assets/medal_base_locked.png" class="medals" title="Eat it, Einstein!">
+		</p>
+	</div>
+	
+	<script src="game.js"></script>
+</body>
+
+</html>
